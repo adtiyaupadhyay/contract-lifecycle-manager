@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clause_Type__c</fullName>
+    <label>Clause_Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Confidentiality</fullName>
+                <default>false</default>
+                <label>Confidentiality</label>
+            </value>
+            <value>
+                <fullName>Payment Terms</fullName>
+                <default>false</default>
+                <label>Payment Terms</label>
+            </value>
+            <value>
+                <fullName>Termination</fullName>
+                <default>false</default>
+                <label>Termination</label>
+            </value>
+            <value>
+                <fullName>Liability</fullName>
+                <default>false</default>
+                <label>Liability</label>
+            </value>
+            <value>
+                <fullName>Data Protection</fullName>
+                <default>false</default>
+                <label>Data Protection</label>
+            </value>
+            <value>
+                <fullName>Indemnity</fullName>
+                <default>false</default>
+                <label>Indemnity</label>
+            </value>
+            <value>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+                <label>Renewal</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
