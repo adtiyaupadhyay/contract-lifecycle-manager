@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Prevent_Edit_When_Locked</fullName>
+    <active>true</active>
+    <description>Blocks edits on Contract record when Is_Locked__c is TRUE, except for System Administrators</description>
+    <errorConditionFormula>AND(
+  Is_Locked__c = TRUE,
+  $Profile.Name &lt;&gt; &quot;System Administrator&quot;
+)</errorConditionFormula>
+    <errorMessage>This contract is locked and cannot be edited. Please contact your System Administrator.</errorMessage>
+</ValidationRule>
