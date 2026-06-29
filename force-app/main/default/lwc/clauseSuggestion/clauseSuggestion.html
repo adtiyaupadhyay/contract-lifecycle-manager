@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="AI Clause Suggestions" icon-name="standard:einstein">
+        
+        <div class="slds-m-around_medium">
+            
+            <!-- Suggest Button -->
+            <lightning-button
+                label="✨ Suggest Clauses"
+                variant="brand"
+                onclick={handleSuggestClauses}
+                disabled={isLoading}>
+            </lightning-button>
+
+            <!-- Loading Spinner -->
+            <template if:true={isLoading}>
+                <div class="slds-m-top_medium">
+                    <lightning-spinner 
+                        alternative-text="AI is thinking..." 
+                        size="medium">
+                    </lightning-spinner>
+                    <p class="slds-text-body_small slds-m-top_small" 
+                       style="color:#706e6b;">
+                        AI is generating clause suggestions...
+                    </p>
+                </div>
+            </template>
+
+            <!-- Error -->
+            <template if:true={error}>
+                <div class="slds-m-top_medium">
+                    <p style="color:red;">{error}</p>
+                </div>
+            </template>
+
+            <!-- Results -->
+            <template if:true={suggestions}>
+                <div class="slds-m-top_medium slds-box slds-theme_shade">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">
+                        💡 Suggested Clauses:
+                    </h3>
+                    <p style="white-space: pre-wrap;">{suggestions}</p>
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
