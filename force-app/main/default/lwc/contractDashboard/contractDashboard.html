@@ -1,0 +1,70 @@
+<template>
+    <lightning-card title="Contract Dashboard" icon-name="standard:contract">
+        
+        <!-- Filter Bar -->
+        <div class="slds-m-around_medium">
+            <lightning-combobox
+                name="statusFilter"
+                label="Filter by Status"
+                value={selectedStatus}
+                placeholder="Select Status"
+                options={statusOptions}
+                onchange={handleStatusChange}>
+            </lightning-combobox>
+        </div>
+
+        <!-- Loading Spinner -->
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+        </template>
+
+        <!-- Error Message -->
+        <template if:true={error}>
+            <div class="slds-m-around_medium">
+                <p style="color:red;">Error loading contracts. Please refresh.</p>
+            </div>
+        </template>
+
+        <!-- Contract Table -->
+        <template if:true={contracts}>
+            <div class="slds-m-around_medium">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th>Contract Name</th>
+                            <th>Status</th>
+                            <th>Value (₹)</th>
+                            <th>End Date</th>
+                            <th>Days Left</th>
+                            <th>Locked</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={contracts} for:item="contract">
+                            <tr key={contract.id}>
+                                <td>
+                                    <a href={contract.recordUrl} target="_blank">{contract.name}</a>
+                                </td>
+                                <td>
+                                    <span class={contract.statusBadgeClass}>{contract.status}</span>
+                                </td>
+                                <td>{contract.contractValue}</td>
+                                <td>{contract.endDate}</td>
+                                <td class={contract.daysClass}>{contract.daysUntilExpiry}</td>
+                                <td>{contract.lockedLabel}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+
+        <!-- No Records -->
+        <template if:false={hasContracts}>
+            <div class="slds-m-around_medium">
+                <p>No contracts found.</p>
+            </div>
+        </template>
+
+    </lightning-card>
+</template>
